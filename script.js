@@ -53,7 +53,17 @@ var tekenAlles = function draw() {
  
   // achtergrond
   fill(150, 250, 50);
-  rect(0, 0, width - 2 * 20, height - 2 * 20);
+  rect(0, 0, width + 2 * 20, height + 2 * 20);
+  
+  if(spelerX < 25) {spelerX = spelerX + 10}
+  if(spelerX > 1255) {spelerX = spelerX - 10}
+  if(spelerY < 25) {spelerY = spelerY + 10}
+  if(spelerY > 620) {spelerY = spelerY - 10}
+
+
+
+
+  
   // vijand
 
   // kogel
@@ -64,10 +74,10 @@ var tekenAlles = function draw() {
   rect(spelerX - 10, spelerY + 70, 10, 30)
  rect(spelerX - 15, spelerY + 20, 30, 50)
   ellipse(spelerX, spelerY , 50, 50)
-   if(keyIsDown(LEFT_ARROW)) {spelerX -= 10;}
-  if(keyIsDown(RIGHT_ARROW)) {spelerX += 10;}
-  if(keyIsDown(UP_ARROW)) {spelerY -= 10;}
-  if(keyIsDown(DOWN_ARROW)) {spelerY += 10;}
+   if(keyIsDown(37)) {spelerX -= 10;}
+  if(keyIsDown(39)) {spelerX += 10;}
+  if(keyIsDown(38)) {spelerY -= 10;}
+  if(keyIsDown(40)) {spelerY += 10;}
 
   
 
