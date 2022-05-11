@@ -14,8 +14,8 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-var spelerX = 600; // x-positie van speler
-var spelerY = 600; // y-positie van speler
+var spelerX = 400; // x-positie van speler
+var spelerY = 200; // y-positie van speler
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -49,18 +49,27 @@ var verwerkBotsing = function () {
 /**
  * Tekent spelscherm
  */
-var tekenAlles = function () {
+var tekenAlles = function draw() {
+ 
   // achtergrond
-
+  fill(150, 250, 50);
+  rect(0, 0, width - 2 * 20, height - 2 * 20);
   // vijand
 
   // kogel
 
   // speler
-  fill("white");
-  rect(spelerX - 25, spelerY - 25, 50, 50);
-  fill("black");
-  ellipse(spelerX, spelerY, 10, 10);
+   fill("white");
+  rect(spelerX, spelerY + 70, 10, 30)
+  rect(spelerX - 10, spelerY + 70, 10, 30)
+ rect(spelerX - 15, spelerY + 20, 30, 50)
+  ellipse(spelerX, spelerY , 50, 50)
+   if(keyIsDown(LEFT_ARROW)) {spelerX -= 10;}
+  if(keyIsDown(RIGHT_ARROW)) {spelerX += 10;}
+  if(keyIsDown(UP_ARROW)) {spelerY -= 10;}
+  if(keyIsDown(DOWN_ARROW)) {spelerY += 10;}
+
+  
 
   // punten en health
 
@@ -111,3 +120,11 @@ function draw() {
 
   }
 }
+
+
+
+ 
+ if(keyIsDown(LEFT_ARROW)) {spelerX -= 10;}
+  if(keyIsDown(RIGHT_ARROW)) {spelerX += 10;}
+  if(keyIsDown(UP_ARROW)) {spelerY -= 10;}
+  if(keyIsDown(DOWN_ARROW)) {spelerY += 10;}
