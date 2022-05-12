@@ -14,8 +14,8 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-var spelerX = 400; // x-positie van speler
-var spelerY = 200; // y-positie van speler
+var spelerX = 270; // x-positie van speler
+var spelerY = 580; // y-positie van speler
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -26,7 +26,13 @@ var spelerY = 200; // y-positie van speler
  */
 var beweegAlles = function () {
   // speler
-
+  fill("white");
+  rect(spelerX, spelerY + 70, 10, 30)
+  rect(spelerX - 10, spelerY + 70, 10, 30)
+ rect(spelerX - 15, spelerY + 20, 30, 50)
+  ellipse(spelerX, spelerY , 50, 50)
+  if(keyIsDown(38)) {spelerY -= 10;}
+  if(keyIsDown(40)) {spelerY += 10;}
   // vijand
 
   // kogel
@@ -60,6 +66,8 @@ var tekenAlles = function draw() {
   if(spelerY < 25) {spelerY = spelerY + 10}
   if(spelerY > 620) {spelerY = spelerY - 10}
 
+  rect (0,380,1450,50)
+  rect (0,680,1450,50)
 
 
 
@@ -74,10 +82,7 @@ var tekenAlles = function draw() {
   rect(spelerX - 10, spelerY + 70, 10, 30)
  rect(spelerX - 15, spelerY + 20, 30, 50)
   ellipse(spelerX, spelerY , 50, 50)
-   if(keyIsDown(37)) {spelerX -= 10;}
-  if(keyIsDown(39)) {spelerX += 10;}
-  if(keyIsDown(38)) {spelerY -= 10;}
-  if(keyIsDown(40)) {spelerY += 10;}
+  
 
   
 
@@ -134,7 +139,4 @@ function draw() {
 
 
  
- if(keyIsDown(LEFT_ARROW)) {spelerX -= 10;}
-  if(keyIsDown(RIGHT_ARROW)) {spelerX += 10;}
-  if(keyIsDown(UP_ARROW)) {spelerY -= 10;}
-  if(keyIsDown(DOWN_ARROW)) {spelerY += 10;}
+ 
