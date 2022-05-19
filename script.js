@@ -13,7 +13,10 @@
 const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
-
+var Omhoog = false
+var OmhoogTwee
+var Omlaag = false
+var OmlaagTwee 
 var spelerX = 270; // x-positie van speler
 var spelerY = 580; // y-positie van speler
 
@@ -31,8 +34,14 @@ var beweegAlles = function () {
   rect(spelerX - 10, spelerY + 70, 10, 30)
  rect(spelerX - 15, spelerY + 20, 30, 50)
   ellipse(spelerX, spelerY , 50, 50)
-  if(keyIsDown(38)) {spelerY -= 10;}
-  if(keyIsDown(40)) {spelerY += 10;}
+  
+  OmhoogTwee = Omhoog
+  Omhoog = keyIsDown(38)
+  if(OmhoogTwee === false && Omhoog === true ) {spelerY -= 270;}
+   
+  OmlaagTwee = Omlaag
+  Omlaag = keyIsDown(40)
+  if(OmlaagTwee === false && Omlaag === true ) {spelerY += 270;}
   // vijand
 
   // kogel
@@ -65,8 +74,8 @@ var tekenAlles = function draw() {
   if(spelerX > 1255) {spelerX = spelerX - 10}
   if(spelerY < 25) {spelerY = spelerY + 10}
   if(spelerY > 620) {spelerY = spelerY - 10}
-
-  rect (0,380,1450,50)
+  rect (0,140,1450,50)
+  rect (0,410,1450,50)
   rect (0,680,1450,50)
 
 
