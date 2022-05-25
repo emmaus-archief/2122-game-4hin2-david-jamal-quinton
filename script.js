@@ -70,10 +70,10 @@ var tekenAlles = function draw() {
   fill(150, 250, 50);
   rect(0, 0, width + 2 * 20, height + 2 * 20);
   
-  if(spelerX < 25) {spelerX = spelerX + 10}
-  if(spelerX > 1255) {spelerX = spelerX - 10}
-  if(spelerY < 25) {spelerY = spelerY + 10}
-  if(spelerY > 620) {spelerY = spelerY - 10}
+  if(spelerX < 25) {spelerX = spelerX + 12}
+  if(spelerX > 1255) {spelerX = spelerX - 12}
+  if(spelerY < 25) {spelerY = spelerY + 12}
+  if(spelerY > 620) {spelerY = spelerY - 12}
   rect (0,140,1450,50)
   rect (0,410,1450,50)
   rect (0,680,1450,50)
@@ -83,6 +83,9 @@ var tekenAlles = function draw() {
   
   // vijand
 
+  //obstakels
+
+  
   // kogel
 
   // speler
