@@ -23,6 +23,7 @@ var vijandX = 1250
 var vijandY = 580
 var healthX = 1250
 var healthY = 580
+var HP = 10
 
 
 /* ********************************************* */
@@ -64,7 +65,14 @@ if (spelerY - vijandY <50 &&
   // botsing kogel tegen vijand
 
   // update punten en health
-
+  if (spelerY - healthY <50 &&
+    spelerY - healthY >-50 &&
+   spelerX - healthX <50 &&
+    spelerX - healthX >-50) {
+    console.log("hartje ");
+    HP += 1
+    healthX =1200
+  }
 };
 
 /**
@@ -105,6 +113,8 @@ fill("red");
   // punten en health
 fill ("yellow");
   ellipse(healthX, healthY, 30,30)
+  textSize(30)
+  text(HP,100,25);
 };
 
 /**
