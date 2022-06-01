@@ -18,7 +18,12 @@ var OmhoogTwee
 var Omlaag = false
 var OmlaagTwee 
 var spelerX = 270; // x-positie van speler
-var spelerY = 580; // y-positie van speler
+var spelerY = 580; // y-positie van speler\
+var vijandX = 1250
+var vijandY = 580
+var healthX = 1250
+var healthY = 580
+
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -29,12 +34,6 @@ var spelerY = 580; // y-positie van speler
  */
 var beweegAlles = function () {
   // speler
-  fill("white");
-  rect(spelerX, spelerY + 70, 10, 30)
-  rect(spelerX - 10, spelerY + 70, 10, 30)
- rect(spelerX - 15, spelerY + 20, 30, 50)
-  ellipse(spelerX, spelerY , 50, 50)
-  
   OmhoogTwee = Omhoog
   Omhoog = keyIsDown(38)
   if(OmhoogTwee === false && Omhoog === true ) {spelerY -= 270;}
@@ -43,7 +42,9 @@ var beweegAlles = function () {
   Omlaag = keyIsDown(40)
   if(OmlaagTwee === false && Omlaag === true ) {spelerY += 270;}
   // vijand
-
+//if ( = SPELEN) {vijandX -= 20}
+  vijandX -= 20
+  healthX -= 10
   // kogel
 };
 
@@ -54,7 +55,12 @@ var beweegAlles = function () {
  */
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
-
+if (spelerY - vijandY <50 &&
+    spelerY - vijandY >-50 &&
+    spelerX - vijandX <50 && 
+    spelerX - vijandX >-50)
+{console.log("boem");}
+  
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -70,10 +76,10 @@ var tekenAlles = function draw() {
   fill(150, 250, 50);
   rect(0, 0, width + 2 * 20, height + 2 * 20);
   
-  if(spelerX < 25) {spelerX = spelerX + 12}
-  if(spelerX > 1255) {spelerX = spelerX - 12}
-  if(spelerY < 25) {spelerY = spelerY + 12}
-  if(spelerY > 620) {spelerY = spelerY - 12}
+  if(spelerX < 25) {spelerX = spelerX + 25}
+  if(spelerX > 1255) {spelerX = spelerX - 10}
+  if(spelerY < 25) {spelerY = spelerY + 30}
+  if(spelerY > 620) {spelerY = spelerY - 45}
   rect (0,140,1450,50)
   rect (0,410,1450,50)
   rect (0,680,1450,50)
@@ -82,10 +88,8 @@ var tekenAlles = function draw() {
 
   
   // vijand
-
-  //obstakels
-
-  
+fill("red");
+  ellipse(vijandX, vijandY , 60,60)
   // kogel
 
   // speler
@@ -99,7 +103,8 @@ var tekenAlles = function draw() {
   
 
   // punten en health
-
+fill ("yellow");
+  ellipse(healthX, healthY, 30,30)
 };
 
 /**
@@ -141,6 +146,7 @@ function draw() {
     if (checkGameOver()) {
       spelStatus = GAMEOVER;
     }
+    
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
