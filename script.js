@@ -46,6 +46,10 @@ var beweegAlles = function () {
 //if ( = SPELEN) {vijandX -= 20}
   vijandX -= 20
   healthX -= 10
+
+  if (healthX < 0) {
+    healthX = 1280;
+  }
   // kogel
 };
 
