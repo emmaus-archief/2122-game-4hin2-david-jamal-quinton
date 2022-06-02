@@ -48,7 +48,9 @@ var beweegAlles = function () {
   healthX -= 10
 
   if (healthX < 0) {
-    healthX = 1280;
+    healthX = 1280;}
+    if (vijandX <0)
+    {vijandX = 1280;
   }
   // kogel
 };
@@ -64,7 +66,9 @@ if (spelerY - vijandY <50 &&
     spelerY - vijandY >-50 &&
     spelerX - vijandX <50 && 
     spelerX - vijandX >-50)
-{console.log("boem");}
+{console.log("boem");
+HP -= 2
+vijandX = 1300}
   
   // botsing kogel tegen vijand
 
@@ -75,7 +79,7 @@ if (spelerY - vijandY <50 &&
     spelerX - healthX >-50) {
     console.log("hartje ");
     HP += 1
-    healthX =1200
+    healthX =1300
   }
 };
 
