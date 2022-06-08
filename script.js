@@ -81,6 +81,10 @@ vijandX = 1300}
     HP += 1
     healthX =1300
   }
+    if (HP < 1)  {
+      spelStatus = GAMEOVER;
+    
+  }
 };
 
 /**
@@ -123,7 +127,7 @@ fill ("yellow");
   ellipse(healthX, healthY, 30,30)
   textSize(30)
   text(HP,100,25);
-};
+}; 
 
 /**
  * return true als het gameover is
@@ -158,7 +162,7 @@ function setup() {
  */
 function draw() {
   if (spelStatus === SPELEN) {
-    beweegAlles();
+     beweegAlles();
     verwerkBotsing();
     tekenAlles();
     if (checkGameOver()) {
@@ -168,7 +172,10 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-
+    if (HP < 1){
+      spelStatus = GAMEOVER;
+    }
+    console.log("game over");
   }
 }
 
