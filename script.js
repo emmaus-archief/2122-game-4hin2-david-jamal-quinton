@@ -172,11 +172,10 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-    if (HP < 1){
-      spelStatus = GAMEOVER;
+    console.log("game over")
+     text("gameover",550,400);
+      fill("black");
     }
-    console.log("game over");
-  }
 }
 
 
