@@ -24,8 +24,10 @@ var vijandY = 580
 var healthX = 1250
 var healthY = 580
 var HP = 10
-
-
+var vG = false 
+var vM = false
+var img
+var imgX = 0
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -43,15 +45,19 @@ var beweegAlles = function () {
   Omlaag = keyIsDown(40)
   if(OmlaagTwee === false && Omlaag === true ) {spelerY += 270;}
   // vijand
-//if ( = SPELEN) {vijandX -= 20}
   vijandX -= 20
   healthX -= 10
 
   if (healthX < 0) {
     healthX = 1280;}
     if (vijandX <0)
-    {vijandX = 1280;
+    { vijandX = 1280
+     vM = true
   }
+  if (imgX <-8720) {
+    imgX = 0;}
+    
+  imgX -= 5
   // kogel
 };
 
@@ -68,8 +74,14 @@ if (spelerY - vijandY <50 &&
     spelerX - vijandX >-50)
 {console.log("boem");
 HP -= 2
-vijandX = 1300}
+ vG = true
+ vijandX = 1280
+}
   
+if (vM == true) {vijandY = 270 
+   ;}
+ if (vG == true) {vijandY = 60 
+ ;}
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -93,9 +105,10 @@ vijandX = 1300}
 var tekenAlles = function draw() {
  
   // achtergrond
+  
   fill(150, 250, 50);
   rect(0, 0, width + 2 * 20, height + 2 * 20);
-  
+  image(img,imgX,-1650,10000,4000);
   if(spelerX < 25) {spelerX = spelerX + 25}
   if(spelerX > 1255) {spelerX = spelerX - 10}
   if(spelerY < 25) {spelerY = spelerY + 30}
@@ -103,7 +116,6 @@ var tekenAlles = function draw() {
   rect (0,140,1450,50)
   rect (0,410,1450,50)
   rect (0,680,1450,50)
-
 
 
   
@@ -137,7 +149,9 @@ var checkGameOver = function () {
   // check of HP 0 is , of tijd op is, of ...
   return false;
 };
-
+function preload () {
+ img = loadImage('./fotos/achter.webp');
+}
 /* ********************************************* */
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
