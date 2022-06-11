@@ -17,10 +17,11 @@ var Omhoog = false
 var OmhoogTwee
 var Omlaag = false
 var OmlaagTwee 
-var spelerX = 270; // x-positie van speler
-var spelerY = 580; // y-positie van speler\
+var spelerX = 270 // x-positie van speler
+var spelerY = 580 // y-positie van speler\
+var randomS = 0 
 var vijandX = 1250
-var vijandY = 580
+var vijandY = 580 + randomS;
 var healthX = 1250
 var healthY = 580
 var HP = 10
@@ -28,6 +29,11 @@ var vG = false
 var vM = false
 var img
 var imgX = 0
+var Pos = [580,310,70]; 
+var PosTwee = false
+var newInd = 2;
+var xPositions = [580,310,70];
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -47,20 +53,25 @@ var beweegAlles = function () {
   // vijand
   vijandX -= 20
   healthX -= 10
-
   if (healthX < 0) {
     healthX = 1280;}
     if (vijandX <0)
     { vijandX = 1280
-     vM = true
   }
-  if (imgX <-8720) {
-    imgX = 0;}
-    
-  imgX -= 5
+ 
+   //if (vM == true) {
+ //vijandY = Pos [Math.floor(Math.random() * 3)];
+//}
   // kogel
 };
+if (imgX <-8720) {
+    imgX = 0;}
+ imgX -= 3
 
+
+//if (Pos = 1) { vijandY = 70}
+ //else if (Pos = 2){vijandY =270}
+ //else if (Pos = 3) {vijandY = 540}
 /**
  * Checkt botsingen
  * Verwijdert neergeschoten dingen
@@ -78,12 +89,10 @@ HP -= 2
  vijandX = 1280
 }
   
-if (vM == true) {vijandY = 270 
-   ;}
- if (vG == true) {vijandY = 60 
- ;}
+ if (vG== true) {vijandY = 60;}
   // botsing kogel tegen vijand
-
+//if (vM == true) { Pos = Math.floor(Math.random() * 3)
+  // ;}
   // update punten en health
   if (spelerY - healthY <50 &&
     spelerY - healthY >-50 &&
@@ -92,7 +101,9 @@ if (vM == true) {vijandY = 270
     console.log("hartje ");
     HP += 1
     healthX =1300
+    vM = true
   }
+  //else {vM = false}
     if (HP < 1)  {
       spelStatus = GAMEOVER;
     
@@ -122,8 +133,32 @@ var tekenAlles = function draw() {
   // vijand
 fill("red");
   ellipse(vijandX, vijandY , 60,60)
-  // kogel
 
+
+  
+
+
+    if (vijandX <0)
+    { vijandX = 1280
+    
+        Pos [Math.floor(Math.random() * Pos.length)] = vijandY;
+        //newInd++;
+    }
+    
+    
+    fill("red");
+  ellipse(vijandX, vijandY , 60,60)
+   for (var i = 0; i < xPositions.length; i++) { 
+        ellipse(vijandX, Pos[i], 60, 60);}
+  { 
+       
+        ellipse(vijandX,vijandY, 60, 60);
+    }
+    
+  // kogel
+  fill("red")
+textSize (30)
+text(Pos,200,50)
   // speler
    fill("white");
   rect(spelerX, spelerY + 70, 10, 30)
