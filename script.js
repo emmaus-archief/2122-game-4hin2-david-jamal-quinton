@@ -107,7 +107,6 @@ if (imgX <-8720) {
  imgX -= 5
    if (imgTX <-1000) {
      imgTX = 0
-     
    }
   imgTX -=5
    ;}
@@ -164,7 +163,7 @@ HP -= 4
     hXT =1350
     hYT =  Pos [Math.floor(Math.random() * Pos.length)]
   }
- if (HP < 0)  {
+ if (HP < 1)  {
       spelStatus = GAMEOVER;
   }
 };
@@ -190,8 +189,12 @@ var tekenAlles = function draw() {
   //rect (0,140,1450,50)
   //rect (0,410,1450,50)
   //rect (0,680,1450,50)
-
-
+  
+  fill ("white");
+  text("Druk F om op te geven",200,20);
+  if (keyIsDown(70)){
+    spelStatus = GAMEOVER;
+  }
   
   // v
 fill("red");
@@ -264,8 +267,11 @@ function draw() {
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
     console.log("game over")
-     text("gameover",550,400);
-      fill("black");
+     text("Gameover, klik Spatie om opnieuw te spelen.",400,400);
+      fill("white");
+     if (keyIsDown(32)) {
+       document.location.reload();
+     }
     }
 }
 
