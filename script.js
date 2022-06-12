@@ -13,13 +13,13 @@
 const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
-const Pos = [580,310,70]; 
+const Pos = [660,390,120]; 
 var Omhoog = false
 var OmhoogT
 var Omlaag = false
 var OmlaagT 
 var sX = 270 // x-positie van s
-var sY = 580 // y-positie van s\
+var sY = 660 // y-positie van s\
 var vX = 1250
 var vY =  Pos [Math.floor(Math.random() * Pos.length)]
 var vXT = 1400
@@ -30,12 +30,19 @@ var hX = 1250
 var hY =  Pos [Math.floor(Math.random() * Pos.length)]
 var hXT = 1350
 var hYT =  Pos [Math.floor(Math.random() * Pos.length)]
-var HP = 25
+var HP = 0
 var img
 var imgT
+var imgA
+var imgAT
+var imgAD
+var imgAV
+var imgAVV
+var imgAS
 var imgX = 0
 var imgTX = 0
 var imgTY
+
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -69,11 +76,11 @@ var begAlles = function () {
                       vX -=5
                       hXt-=5
                       hX -=5}
-    if (HP > 25 ) { vXD -=45
-                         vXT -= 5
-                        vX -=5
-                        hXT-=5
-                        hX -=5}
+    if (HP > 25 ) { vXD -=42
+                         vXT -= 2
+                        vX -=2
+                        hXT-=2
+                        hX -=2}
       else {vXD = 1400}
     
   
@@ -104,11 +111,11 @@ var begAlles = function () {
  
 if (imgX <-8720) {
     imgX = 0;}
- imgX -= 5
+ imgX -= 3
    if (imgTX <-1000) {
      imgTX = 0
    }
-  imgTX -=5
+  imgTX -=2
    ;}
 /**
  * Checkt botsingen
@@ -163,7 +170,7 @@ HP -= 4
     hXT =1350
     hYT =  Pos [Math.floor(Math.random() * Pos.length)]
   }
- if (HP < 1)  {
+ if (HP < 0)  {
       spelStatus = GAMEOVER;
   }
 };
@@ -181,14 +188,18 @@ var tekenAlles = function draw() {
   image(imgT,imgTX,410,1450,50)
   for (var i=0 ; i<20 ; i++){
     var imgTY = 140 + (i * 270);
-   image(imgT,imgTX,imgTY,3450,50);}
+   image(imgT,imgTX,imgTY,3450,50);
+  image(imgA,hX-30, hY-30, 60,60)
+  image(imgAT,hXT-30, hYT-30, 60,60)
+  image(imgAD,vX-30, vY-30 , 60,60)
+  image(imgAD,vXT-30, vYT-30 , 60,60)
+  image(imgAV,vXD-30, vYD-30 , 60,60)
+  image(imgAS,sX-30, sY-30 , 60,60)}
   if(sX < 25) {sX = sX + 25}
   if(sX > 1255) {sX = sX - 10}
-  if(sY < 25) {sY = sY + 30}
-  if(sY > 620) {sY = sY - 45}
-  //rect (0,140,1450,50)
-  //rect (0,410,1450,50)
-  //rect (0,680,1450,50)
+  if(sY < 110) {sY = 120}
+  if(sY > 670) {sY = 660}
+
   
   fill ("white");
   text("Druk F om op te geven",200,20);
@@ -197,27 +208,17 @@ var tekenAlles = function draw() {
   }
   
   // v
-fill("red");
-  ellipse(vX, vY , 60,60)
-  ellipse(vXT,vYT,60,60)
-  fill("orange");
-  ellipse(vXD, vYD , 60,60)
+
   // kogel
   
   // s
-   fill("white");
-  rect(sX, sY + 70, 10, 30)
-  rect(sX - 10, sY + 70, 10, 30)
- rect(sX - 15, sY + 20, 30, 50)
-  ellipse(sX, sY , 50, 50)
   
   // punten en h
 fill ("yellow");
-  ellipse(hX, hY, 30,30)
+  
   textSize(30)
   text(HP,100,25);
-fill("green")
- ellipse(hXT, hYT, 30,30)
+
 }; 
 
 /**
@@ -231,6 +232,12 @@ var checkGameOver = function () {
 function preload () {
  img = loadImage('./fotos/achter.webp');
   imgT = loadImage('./fotos/grond.png');
+  imgA = loadImage('./fotos/among1.png');
+  imgAT = loadImage('./fotos/among2.png');
+  imgAD = loadImage('./fotos/among3.png');
+  imgAV = loadImage('./fotos/among4.png');
+  imgAS = loadImage('./fotos/amongS.gif');
+
 }
 /* ********************************************* */
 /* setup() en draw() functies / hoofdprogramma   */
