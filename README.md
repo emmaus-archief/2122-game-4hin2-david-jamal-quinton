@@ -6,7 +6,8 @@ Gemaakt door:
 - *Jamal*
 
 ### Beschrijving
-*korte beschrijving van het spel, wat je kunt doen in het spel, wat het doel is*
+ontwijk de rode en oranje poppetjes, de gele en groene geven hp. bij elke 5 hp erbij wordt het moeilijk. doel is om 50 hp te halen.
+quinton maakt begin en uitlegscherm, david gameover en resetscherm en jamal de rest
 
 ## Mijn planning
 Werk de planning af van boven naar beneden<br>
