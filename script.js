@@ -13,15 +13,15 @@
 const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
+const Pos = [580,310,70]; 
 var Omhoog = false
 var OmhoogTwee
 var Omlaag = false
 var OmlaagTwee 
 var spelerX = 270 // x-positie van speler
 var spelerY = 580 // y-positie van speler\
-var randomS = 0 
 var vijandX = 1250
-var vijandY = 580 + randomS;
+var vijandY =  Pos [Math.floor(Math.random() * Pos.length)]
 var healthX = 1250
 var healthY = 580
 var HP = 10
@@ -29,10 +29,12 @@ var vG = false
 var vM = false
 var img
 var imgX = 0
-var Pos = [580,310,70]; 
 var PosTwee = false
-var newInd = 2;
-var xPositions = [580,310,70];
+
+  
+  
+
+
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -45,7 +47,8 @@ var beweegAlles = function () {
   // speler
   OmhoogTwee = Omhoog
   Omhoog = keyIsDown(38)
-  if(OmhoogTwee === false && Omhoog === true ) {spelerY -= 270;}
+  if(OmhoogTwee === false && Omhoog === true ) {spelerY -= 270;
+   vijandY = spelerY - 270                                            }
    
   OmlaagTwee = Omlaag
   Omlaag = keyIsDown(40)
@@ -57,21 +60,21 @@ var beweegAlles = function () {
     healthX = 1280;}
     if (vijandX <0)
     { vijandX = 1280
+    // vM = true
+      vijandY = Pos [Math.floor(Math.random() * Pos.length)]
   }
  
-   //if (vM == true) {
- //vijandY = Pos [Math.floor(Math.random() * 3)];
-//}
+   
   // kogel
 };
 if (imgX <-8720) {
     imgX = 0;}
- imgX -= 3
+ imgX -= 5
 
 
-//if (Pos = 1) { vijandY = 70}
- //else if (Pos = 2){vijandY =270}
- //else if (Pos = 3) {vijandY = 540}
+        
+       
+
 /**
  * Checkt botsingen
  * Verwijdert neergeschoten dingen
@@ -85,14 +88,17 @@ if (spelerY - vijandY <50 &&
     spelerX - vijandX >-50)
 {console.log("boem");
 HP -= 2
- vG = true
+ vijandY = Pos [Math.floor(Math.random() * Pos.length)]
+ ///vG = true
  vijandX = 1280
 }
   
- if (vG== true) {vijandY = 60;}
+ //if (vG== true) {vijandY = Pos [Math.floor(Math.random() * Pos.length)]}
   // botsing kogel tegen vijand
-//if (vM == true) { Pos = Math.floor(Math.random() * 3)
-  // ;}
+ /*if (vM == true) {vijandY = 280 } { vijandY = Pos [Math.floor(Math.random() * Pos.length)] }
+  for (var i = 0; i < Pos.length; i+ 0) {  ellipse(vijandX, Pos[i], 60, 60);}*/
+ 
+  
   // update punten en health
   if (spelerY - healthY <50 &&
     spelerY - healthY >-50 &&
@@ -101,9 +107,9 @@ HP -= 2
     console.log("hartje ");
     HP += 1
     healthX =1300
-    vM = true
+   // vM = true
   }
-  //else {vM = false}
+ 
     if (HP < 1)  {
       spelStatus = GAMEOVER;
     
@@ -141,15 +147,15 @@ fill("red");
     if (vijandX <0)
     { vijandX = 1280
     
-        Pos [Math.floor(Math.random() * Pos.length)] = vijandY;
+       // Pos [Math.floor(Math.random() * Pos.length)] = vijandY;
         //newInd++;
     }
     
     
-    fill("red");
+    /*fill("red");
   ellipse(vijandX, vijandY , 60,60)
    for (var i = 0; i < xPositions.length; i++) { 
-        ellipse(vijandX, Pos[i], 60, 60);}
+        ellipse(vijandX, Pos[i], 60, 60);}*/
   { 
        
         ellipse(vijandX,vijandY, 60, 60);
